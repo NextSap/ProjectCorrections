@@ -1,2 +1,2 @@
 # ProjectCorrections
-This repository contains the Mamak_'s NCI Project Correction.
+This repository contains the Mamak_'s NSI Project Correction.
