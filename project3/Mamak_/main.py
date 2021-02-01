@@ -1,16 +1,16 @@
 import random
 
 
-def select():
+def get_random_word():
     words = []
     with open('words.txt', 'r') as file:
         for word in file:
             words.append(word.replace('\n', ''))
     selection = random.choice(words)
-    return selection  # ok
+    return selection  # OK
 
 
-def boolean(word, userinput):
+def get_result(word, userinput):
     result = bool(False)
     array = list(word)
     save = []
@@ -19,11 +19,12 @@ def boolean(word, userinput):
         if userinput == loop:
             result = bool(True)
             save.append(tool)
-    tool = tool + 1
-    return result, save  # give le résultat, ok
+        tool += 1
+    print(result, save)
+    return result, save  # OK
 
 
-def dessinPendu(draw):
+def get_draw(draw):
     tab = [
         """
            +-------+
@@ -93,43 +94,56 @@ def dessinPendu(draw):
     return tab[draw]
 
 
-def cheatingcheck(userresponses, userinput, word):
-    for check in userresponses:
-        finalcheck = bool(False)
-    if userinput == check:
-        result = boolean(word, userinput)
-        if result == bool(True):
-            print("Vous avez déjà rentré cette lettre, de plus, cette réponse était correcte.")
-        cheating = bool(True)
+def cheating_check(user_responses, user_input, word):
+    for check in user_responses:
+        if user_input == check:
+            result = get_result(word, user_input)[0]
+            if result:
+                print("Vous avez déjà rentré cette lettre, de plus, cette réponse était correcte.")
+            else:
+                print("Vous avez déjà rentré cette lettre, de plus, cette réponse était incorrecte.")
+            cheating = bool(True)
         else:
-        print("Vous avez déjà rentré cette lettre, de plus, cette réponse était incorrecte.")
-        cheating = bool(True)
-    else:
-        finalcheck = bool(False)
-        cheating = bool(False)
-    return cheating
+            cheating = bool(False)
+        return cheating
+
+
+def ask_for_a_letter(user_responses, word):
+    user_input = input("Veuillez entrer une lettre: ").upper()
+
+    cheating = cheating_check(user_responses, user_input, word)
+    if cheating == bool(False):
+        user_responses.append(user_input)
+    return get_result(word, user_input)[0], user_input
+
+
+def replace(word, letter, index):  # Méthode qui permet de remplacer un '_' dans un word par la letter à l'index + affiche le résultat
+    return ""
 
 
 def main():
     draw = 0
-    userresponses = []
-    word = select()
-    lenght = len(word)
-    find = "-"
-    while len(find) < lenght:
-        find = find + "-"
-    print(word + "\n" + find)
-    userinput = input("Veuillez entrer une lettre: ")
-    userinput = userinput.upper
-    userinput = str(userinput)
-    cheating = cheatingcheck(userresponses, userinput, word)
-    if cheating == bool(False):
-        userresponses.append(userinput)
-    result = boolean(word, userinput)[0]
-    if result == True:
-        print("Vous avez rentré la lettre " + userinput + " et vous aviez raison !")
-    else:
-        draw = draw + 1
-        print("La lettre " + userinput + " est incorrecte, essayez encore.")
+    user_responses = []
+    word = get_random_word()
+    length = len(word)
+    current_word = "_"
+
+    print(word)
+
+    while len(current_word) < length:
+        current_word += "_"
+
+    while current_word != word:
+        if draw == 6:
+            print("Vous avez perdu")
+            return
+        response = ask_for_a_letter(user_responses, word)
+        if response[0]:
+            print("Vous avez rentré la lettre " + response[1] + " et vous aviez raison !")
+            # replace(....)
+        else:
+            get_draw(draw)
+            print("La lettre " + response[1] + " est incorrecte, essayez encore.")
+
 
 main()
