@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Ma page</title>
+		<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+	</head>
+	<body>
+	  <h1>Mon super site</h1>
+	  <p>Tout fonctionne parfaitement, voici <a href="{{ url_for('autre_page') }}">un lien</a> vers une autre page</p>
+	</body>
+</html>
