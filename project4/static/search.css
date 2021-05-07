@@ -1,0 +1,76 @@
+body 
+{
+	background-color: #374D55;
+}
+
+#header
+{
+	text-align: center;
+	background-color: #8FC4D7;
+	font-family: 'Cursive', sans-serif;
+ 	font-size: large;
+	padding: 1% 1%;
+	color: #444849;
+}
+
+a
+{
+	text-align: center;
+	color: #FFFFFF;
+	font-family: 'Cursive', sans-serif;
+	text-decoration: none;
+}
+
+p
+{
+	text-align: center;
+ 	font-size: large;
+	margin: 2% auto;
+}
+
+h3
+{
+	font-family: 'Cursive', sans-serif;
+	color: #FFFFFF;	
+	text-align: center;
+ 	font-size: large;
+}
+
+#contact
+{
+	background-color: #A2B6BD;
+	color: black;
+	border: none;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin: 1% auto;
+	padding: 0.5% 0.5%;
+	font-size: 90%;
+	font-weight: bold;
+
+
+}
+
+label
+{
+	text-align: center;
+	display: block;
+	color: #FFFFFF;
+	font-family: 'Cursive', sans-serif;
+}
+
+#searchbutton
+{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	background-color: #A2B6BD;
+	color: black;
+	border: 2px solid black;
+	cursor: pointer;
+	padding: 7px 10px;
+	color: black;
+	font-weight: bold;
+}
+	

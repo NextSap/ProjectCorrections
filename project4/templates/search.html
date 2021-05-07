@@ -2,14 +2,17 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Voici mon site</title>
-		<link rel="stylesheet" href="CSS/style.css">
+		<title>Recherche - Répertoire téléphonique</title>
+		<link rel="stylesheet" href="{{url_for('static', filename='search.css')}}">
 	</head>
 	<body>
-		<h1>Répertoire téléphonique</h1>
+		<div id="header">
+			<h1>Répertoire téléphonique</h1>
+		</div>
 		<h3>Trouvez le numéro de votre correspondant</h3>
 		<form action="http://localhost:5000/result" method="post">
-	    	<label>Nom: </label> : <input type=text" name="contact_name"/>
-	     	<input type="submit" value="Rechercher" />
+	    	<label>Entrez le nom:</label> <input id="textbox" type=text" name="contact_name"/>
+	     	<input id="searchbutton" type="submit" value="Rechercher" />
+		<p><a href="..">🏠 Cliquez ici afin de revenir au menu principal</a></p>
 	</body>
 </html>

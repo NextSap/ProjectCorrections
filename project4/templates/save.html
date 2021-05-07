@@ -3,14 +3,17 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Accueil - Répertoire téléphonique</title>
-		<link rel="stylesheet" href="CSS/style.css">
+		<link rel="stylesheet" href="{{url_for('static', filename='save.css')}}">
 	</head>
 	<body>
-		<h1>Répertoire téléphonique</h1>
+		<div id="header">
+			<h1>Répertoire téléphonique</h1>
+		</div>
 		<h3>Enregistrer le numéro d'un correspondant</h3>
 		<form action="http://localhost:5000/save_confirm" method="post">
-	    	<label>Nom: </label>  <input type=text" name="contact_name"/>
-	    	<label>Numéro </label>  <input type=text" name="phone_number"/>
-	     	<input type="submit" value="Enregistrer" />
+	    	<label>Nom: </label>  <input id="contact" type=text" name="contact_name"/>
+	    	<label>Numéro: </label>  <input id="contact" type=text" name="phone_number"/>
+	     	<input id="savebutton" type="submit" value="Enregistrer" />
+		<p><a href="..">🏠 Cliquez ici afin de revenir au menu principal</a></p>
 	</body>
 </html>

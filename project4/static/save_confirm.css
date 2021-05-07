@@ -1,0 +1,54 @@
+body 
+{
+	background-color: #374D55;
+}
+
+#header
+{
+	text-align: center;
+	background-color: #8FC4D7;
+	font-family: 'Cursive', sans-serif;
+ 	font-size: large;
+	padding: 1% 1%;
+	color: #444849;
+}
+
+a
+{
+	text-align: center;
+	color: #FFFFFF;
+	font-family: 'Cursive', sans-serif;
+	text-decoration: none;
+}
+
+p
+{
+	text-align: center;
+ 	font-size: large;
+	color: white;
+	font-family: 'Cursive', sans-serif;
+}
+
+h3
+{
+	font-family: 'Cursive', sans-serif;
+	color: #FFFFFF;	
+	text-align: center;
+ 	font-size: large;
+}
+
+#contact
+{
+	color: white;
+	font-weight: bold;
+}
+
+#result
+{
+	text-decoration: underline;
+}
+
+#home
+{
+	margin: 2% auto;
+}

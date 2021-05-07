@@ -1,0 +1,39 @@
+body {
+ background-color: #374D55;
+}
+
+#header
+{
+	text-align: center;
+	background-color: #8FC4D7;
+	font-family: 'Cursive', sans-serif;
+ 	font-size: large;
+	padding: 1% 1%;
+	color: #444849;
+}
+
+a
+{
+	text-align: center;
+	color: #FFFFFF;
+	font-family: 'Cursive', sans-serif;
+	text-decoration: none;
+}
+
+p
+{
+	text-align: center;
+ 	font-size: large;
+}
+
+
+
+#name
+{
+	position: absolute;
+	bottom: 5px;
+	right: 1px;
+	width: 20%;
+	color: #FFFFFF;
+	font-family: 'Cursive', sans-serif;
+}
