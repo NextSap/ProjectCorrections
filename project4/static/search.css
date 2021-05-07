@@ -36,7 +36,7 @@ h3
  	font-size: large;
 }
 
-#contact
+#searchedname
 {
 	background-color: #A2B6BD;
 	color: black;
@@ -48,8 +48,6 @@ h3
 	padding: 0.5% 0.5%;
 	font-size: 90%;
 	font-weight: bold;
-
-
 }
 
 label
