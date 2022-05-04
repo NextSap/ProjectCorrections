@@ -1,24 +1,43 @@
 import random
 
+
 def get_random_word():
-    words = []
-    with open('words.txt', 'r') as file:
-        for word in file:
-            words.append(word.replace('\n', ''))
-    selection = random.choice(words)
-    return selection  # OK
-def get_result(word, user_input):
-    result = bool(False)
-    array = list(word)
-    save = []
-    tool = 0
-    for loop in array:
-        if user_input == loop:
-            result = bool(True)
-            save.append(tool)
-        tool += 1
-    return result, save  # OK
-def get_draw(draw):
+    with open("dico.txt", "r", encoding="UTF-8") as file:
+        word_list = file.read().splitlines()
+        return random.choice(word_list)
+
+
+def get_letter(char_list, current_word):
+    count = 0
+    char_already_said_list = []
+
+    while char_list != current_word:
+        if count == 6:
+            to_print = ""
+            for i in range(len(char_list)):
+                to_print += char_list[i]
+            print("Tu as perdu, le mot était " + to_print)
+            return
+        input_letter = input("Proposez une lettre : ").upper()
+        if input_letter in char_already_said_list:
+            print("Tu as déjà entré cette lettre")
+        elif input_letter not in char_list:
+            print("Cette lettre est incorrect")
+            print(get_draw(count))
+            count += 1
+        elif input_letter in char_list:
+            print("Cette lettre est correct")
+            index = char_list.index(input_letter)
+            current_word[index] = input_letter
+        char_already_said_list.append(input_letter)
+        to_print = ""
+        for i in range(len(current_word)):
+            to_print += current_word[i]
+        print(to_print)
+    return "Tu as gagné"
+
+
+def get_draw(nb):
     tab = [
         """
            +-------+
@@ -76,67 +95,23 @@ def get_draw(draw):
         ==============
         """
     ]
-    return tab[draw]
-
-
-def cheating_check(user_responses, user_input, word):
-    if user_input in user_responses:
-        result = get_result(word, user_input)[0]
-        if result:
-            print("⚠ Vous avez déjà rentré cette lettre, de plus, cette réponse était correcte.")
-        else:
-            print("⚠ Vous avez déjà rentré cette lettre, de plus, cette réponse était incorrecte.")
-        cheating = bool(True)
-    else:
-        cheating = bool(False)
-    return cheating
-
-
-def ask_for_a_letter(user_responses, word):
-    user_input = input("➜ Veuillez entrer une lettre: ").upper()
-
-    cheating = cheating_check(user_responses, user_input, word)
-    if cheating == bool(False):
-        user_responses.append(user_input)
-    return get_result(word, user_input), user_input, user_responses, cheating
-
-def replace(letter, index, current_word):
-    word_array=list(current_word)
-    word_array[index]=letter
-    final_word=""
-    for char in word_array:
-        final_word=final_word+str(char)
-    return final_word
+    return tab[nb]
 
 
 def main():
-    draw = 0
-    get_draw(draw)
-    user_responses = []
     word = get_random_word()
-    length = len(word)
-    current_word = "-"
-    while len(current_word) < length:
-        current_word += "-"
-    print(current_word)
-    while current_word != word:
-        if draw == 6:
-            print("\n➜ Partie terminée ! Vous avez perdu !")
-            print("➜ Le mot attendu était: "+word)
-            return
-        response = ask_for_a_letter(user_responses, word)
-        user_responses = response[2]
-        cheating = response[3]
-        if response[0][0]:
-            for i in response[0][1]:
-                current_word = replace(response[1], i, current_word)
-            if cheating==False:
-                print("✓ Vous avez rentré la lettre " + response[1] + " et vous aviez raison !")
-                print(current_word)
-        else:
-            if not cheating:
-                print(get_draw(draw))
-                print("✗ La lettre " + response[1] + " est incorrecte, essayez encore.")
-                print("➜ Nous recherchons le mot: "+ current_word)
-                draw += 1
+    char_list = list(word)
+    current_word = []
+
+    for i in range(len(word)):
+        current_word.append("_")
+
+    string = ""
+    for i in range(len(current_word)):
+        string += current_word[i]
+    print(string)
+
+    get_letter(word, current_word)
+
+
 main()
